@@ -98,6 +98,17 @@ $routes->group('pengumuman', function($routes){
     $routes->get('delete/(:num)', 'PengumumanController::delete/$1');
 });
 
+
+$routes->group('jamaah', function($routes){
+    $routes->get('/', 'JamaahController::index');
+    $routes->get('create', 'JamaahController::create');
+    $routes->post('save', 'JamaahController::save');
+    $routes->get('edit/(:num)', 'JamaahController::edit/$1');
+    $routes->post('update/(:num)', 'JamaahController::update/$1');
+    $routes->get('delete/(:num)', 'JamaahController::delete/$1');
+});
+
+
 # routes
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
