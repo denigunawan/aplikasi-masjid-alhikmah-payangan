@@ -140,6 +140,13 @@
                             Login
 
                         </button>
+                       <a href="<?= base_url('/'); ?>"
+                        class="btn btn-outline-success">
+
+                        <i class="bi bi-house-door"></i>
+                        Kembali ke Website Masjid
+
+                    </a>
 
                     </form>
 
