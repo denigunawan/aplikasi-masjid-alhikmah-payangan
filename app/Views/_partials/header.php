@@ -118,7 +118,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('/logout'); ?>">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -218,11 +218,6 @@
                     <li>
                         <a href="<?= base_url('jamaah'); ?>">
                             <i class="bi bi-person"></i><span>Data Jamaah</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('relawan'); ?>">
-                            <i class="bi bi-person-plus"></i><span>Pendaftaran Relawan</span>
                         </a>
                     </li>
                 </ul>

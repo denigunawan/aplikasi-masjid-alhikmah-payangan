@@ -1,328 +1,173 @@
+```php
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Login | Masjid Al Hikmah</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Sistem Informasi Masjid Al Hikmah">
-    <meta name="keywords" content="Masjid, Dashboard, Keuangan Masjid">
+    <title>Sistem Informasi Masjid Al Hikmah</title>
 
-    <!-- Favicon -->
-    <link href="<?= base_url('assets/logo/brand.jpg'); ?>" rel="icon">
-    <link href="<?= base_url('assets/logo/brand.jpg'); ?>" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
-        rel="stylesheet">
-
-    <!-- Vendor CSS -->
-    <link href="<?= base_url('dash/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?= base_url('dash/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
-
-    <!-- Main CSS -->
-    <link href="<?= base_url('dash/css/style.css'); ?>" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        body {
+
+        body{
+            min-height:100vh;
             background:
-                linear-gradient(rgba(13, 110, 253, 0.75),
-                    rgba(25, 135, 84, 0.75)),
-                url('<?= base_url('assets/img/ui/masjid_ui.png'); ?>');
-
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
+                linear-gradient(
+                    rgba(0,0,0,.65),
+                    rgba(0,0,0,.65)
+                ),
+                url('<?= base_url('assets/img/ui/background_header.jpg'); ?>');
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
         }
 
-        .login-card {
-            border: none;
-            border-radius: 20px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.96);
+        .login-card{
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,.95);
+            border-radius:20px;
         }
 
-        .login-logo img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(0,0,0,.15);
+        .logo-masjid{
+            width:100px;
+            height:100px;
+            object-fit:cover;
+            border-radius:50%;
+            border:4px solid #198754;
+            padding:5px;
+            background:#fff;
         }
 
-        .login-title {
-            font-weight: 700;
-            color: #012970;
+        .btn-login{
+            height:50px;
+            font-weight:600;
         }
 
-        .form-control {
-            height: 50px;
-            border-radius: 12px;
+        .footer-login{
+            font-size:13px;
+            color:#6c757d;
         }
 
-        .input-group-text {
-            border-radius: 12px 0 0 12px;
-        }
-
-        .btn-login {
-            height: 50px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: .3s;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(13,110,253,.3);
-        }
-
-        .login-footer {
-            font-size: 13px;
-            color: #6c757d;
-        }
-
-        .welcome-text {
-            color: #fff;
-        }
-
-        .welcome-text h1 {
-            font-weight: 700;
-            font-size: 42px;
-        }
-
-        .welcome-text p {
-            font-size: 16px;
-            opacity: .9;
-        }
-
-        @media(max-width: 991px) {
-            .welcome-text {
-                display: none;
-            }
-        }
     </style>
+
 </head>
 
 <body>
 
-<main>
+<div class="container">
 
-    <div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
 
-        <section class="section register min-vh-100 d-flex align-items-center">
+        <div class="col-lg-5 col-md-7">
 
-            <div class="container">
+            <div class="card login-card border-0 shadow-lg">
 
-                <div class="row justify-content-center align-items-center">
+                <div class="card-body p-5">
 
-                    <!-- LEFT CONTENT -->
-                    <div class="col-lg-6 d-none d-lg-block">
+                    <div class="text-center mb-4">
 
-                        <div class="welcome-text pe-5">
+                        <img src="<?= base_url('assets/logo/brand.jpg'); ?>"
+                            class="logo-masjid mb-3">
 
-                            <h1>
-                                Sistem Informasi
-                                <br>
-                                Masjid Al Hikmah
-                            </h1>
+                        <h2 class="fw-bold text-success mb-1">
+                            Masjid Al Hikmah
+                        </h2>
 
-                            <p class="mt-4">
+                        <p class="text-muted mb-0">
+                            Sistem Informasi Manajemen Masjid
+                        </p>
 
-                                Kelola keuangan, kegiatan masjid,
-                                inventaris, jamaah, dan laporan secara
-                                modern dalam satu dashboard terintegrasi.
+                    </div>
 
-                            </p>
+                    <?php if(session()->getFlashdata('error')): ?>
 
-                            <div class="mt-5 d-flex gap-4">
+                        <div class="alert alert-danger">
 
-                                <div>
-                                    <h3 class="fw-bold">100%</h3>
-                                    <small>Management</small>
-                                </div>
+                            <i class="bi bi-exclamation-circle"></i>
 
-                                <div>
-                                    <h3 class="fw-bold">Realtime</h3>
-                                    <small>Laporan Keuangan</small>
-                                </div>
-
-                                <div>
-                                    <h3 class="fw-bold">Digital</h3>
-                                    <small>Administrasi Masjid</small>
-                                </div>
-
-                            </div>
+                            <?= session()->getFlashdata('error'); ?>
 
                         </div>
 
-                    </div>
-                    <!-- END LEFT -->
+                    <?php endif; ?>
 
-                    <!-- RIGHT LOGIN -->
-                    <div class="col-lg-5 col-md-8">
+                    <form action="<?= base_url('process-login'); ?>" method="post">
 
-                        <div class="card login-card shadow-lg">
+                        <div class="mb-3">
 
-                            <div class="card-body p-5">
+                            <label class="form-label fw-semibold">
 
-                                <!-- LOGO -->
-                                <div class="text-center mb-4 login-logo">
+                                <i class="bi bi-person-circle"></i>
+                                Username
 
-                                    <img src="<?= base_url('assets/logo/brand.jpg'); ?>" alt="Logo">
+                            </label>
 
-                                </div>
-
-                                <div class="text-center mb-4">
-
-                                    <h3 class="login-title">
-                                        Login Administrator
-                                    </h3>
-
-                                    <p class="text-muted small">
-                                        Silahkan login untuk masuk ke dashboard
-                                    </p>
-
-                                </div>
-
-                                <!-- ALERT -->
-                                <?php if(session()->getFlashdata('error')): ?>
-
-                                    <div class="alert alert-danger">
-
-                                        <i class="bi bi-exclamation-triangle me-1"></i>
-
-                                        <?= session()->getFlashdata('error'); ?>
-
-                                    </div>
-
-                                <?php endif; ?>
-
-                                <!-- FORM -->
-                                <form action="<?= base_url('auth/login'); ?>" method="post">
-
-                                    <!-- USERNAME -->
-                                    <div class="mb-3">
-
-                                        <label class="form-label fw-semibold">
-                                            Username
-                                        </label>
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-text">
-                                                <i class="bi bi-person"></i>
-                                            </span>
-
-                                            <input
-                                                type="text"
-                                                name="username"
-                                                class="form-control"
-                                                placeholder="Masukkan username"
-                                                required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- PASSWORD -->
-                                    <div class="mb-3">
-
-                                        <label class="form-label fw-semibold">
-                                            Password
-                                        </label>
-
-                                        <div class="input-group">
-
-                                            <span class="input-group-text">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-
-                                            <input
-                                                type="password"
-                                                name="password"
-                                                class="form-control"
-                                                placeholder="Masukkan password"
-                                                required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <!-- REMEMBER -->
-                                    <div class="d-flex justify-content-between align-items-center mb-4">
-
-                                        <div class="form-check">
-
-                                            <input
-                                                class="form-check-input"
-                                                type="checkbox"
-                                                id="rememberMe">
-
-                                            <label class="form-check-label small" for="rememberMe">
-
-                                                Remember me
-
-                                            </label>
-
-                                        </div>
-
-                                        <a href="#" class="small text-decoration-none">
-
-                                            Lupa Password?
-
-                                        </a>
-
-                                    </div>
-
-                                    <!-- BUTTON -->
-                                    <button type="submit"
-                                        class="btn btn-primary w-100 btn-login">
-
-                                        <i class="bi bi-box-arrow-in-right me-1"></i>
-
-                                        Login Sekarang
-
-                                    </button>
-
-                                </form>
-
-                                <!-- FOOTER -->
-                                <div class="text-center mt-4 login-footer">
-
-                                    © <?= date('Y'); ?> Masjid Al Hikmah
-                                    <br>
-                                    Sistem Informasi Manajemen Masjid
-
-                                </div>
-
-                            </div>
+                            <input type="text"
+                                name="username"
+                                class="form-control form-control-lg"
+                                placeholder="Masukkan Username"
+                                required>
 
                         </div>
 
+                        <div class="mb-4">
+
+                            <label class="form-label fw-semibold">
+
+                                <i class="bi bi-lock-fill"></i>
+                                Password
+
+                            </label>
+
+                            <input type="password"
+                                name="password"
+                                class="form-control form-control-lg"
+                                placeholder="Masukkan Password"
+                                required>
+
+                        </div>
+
+                        <button type="submit"
+                            class="btn btn-success btn-login w-100">
+
+                            <i class="bi bi-box-arrow-in-right"></i>
+
+                            Login
+
+                        </button>
+
+                    </form>
+
+                    <hr>
+
+                    <div class="text-center footer-login">
+
+                        <i class="bi bi-moon-stars-fill text-success"></i>
+
+                        Masjid Al Hikmah © <?= date('Y'); ?>
+
+                        <br>
+
+                        Sistem Informasi Pengelolaan Masjid
+
                     </div>
-                    <!-- END RIGHT -->
 
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
     </div>
 
-</main>
-
-<!-- Vendor JS -->
-<script src="<?= base_url('dash/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+</div>
 
 </body>
 
 </html>
+```
