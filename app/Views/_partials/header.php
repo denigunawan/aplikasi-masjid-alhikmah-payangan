@@ -97,21 +97,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                                href="<?php echo base_url('/profile'); ?>">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </li>
-                        <li>
                             <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo base_url('/faq'); ?>">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Butuh Bantuan?</span>
-                            </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
