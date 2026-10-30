@@ -62,6 +62,7 @@
                         </ul>
                     </li>
                     <li><a href="<?php echo base_url('/kontak')?>">Kontak Masjid</a></li>
+                    <li><a href="<?php echo base_url('/masuk')?>">Login</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>

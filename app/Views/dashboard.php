@@ -107,13 +107,6 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- <tr>
-                        <th scope="row"><a href="#">#1</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr> -->
                         <tr>
                           <td>1</td>
                           <td>06-05-2026</td>
